@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: cliente-spring-data-rest
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:file:~/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    initialize: true
+#  datasource:
+#    url: jdbc:sqlserver://RVMTPR0008.riachuelo.net\\DEV:55224;databaseName=Sicc;integratedSecurity=false
+#    username: WBSCCDBS
+#    password: PROJ1uyFTSY4Fm7ZNyjw14BAd
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    initialize: true
+  jpa:
+    properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
+#    properties.hibernate.dialect: org.hibernate.dialect.SQLServer2012Dialect
+    hibernate:
+      ddl-auto: create-drop
+server.port: 8080
