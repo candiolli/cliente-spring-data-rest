@@ -1,6 +1,5 @@
 # cliente-spring-data-rest
 Projeto de estudo utilizando Spring Data REST + Hibernate Envers
 
-O objetivo era criar uma api de crud com rapidez.
+O objetivo era criar uma api de CRUD o mais rapido possível, para disponibilizar as operações básicas.
 
-Criando as classes de entidade e seus repository`s o spring faz o resto.

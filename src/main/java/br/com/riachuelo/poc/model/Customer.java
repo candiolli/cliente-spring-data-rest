@@ -3,23 +3,27 @@ package br.com.riachuelo.poc.model;
 import br.com.riachuelo.poc.util.JsonDateDeserializer;
 import br.com.riachuelo.poc.util.JsonDateSerializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import org.hibernate.envers.AuditTable;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Audited
 @Entity
 @Table
-@AuditTable(value = "CLIENTE_AUDIT")
+@AuditTable(value = "customer_audit")
 @Data
-public class Cliente implements Serializable {
+public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,25 +31,21 @@ public class Cliente implements Serializable {
     private Long id;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "DAT_NASC")
+    @Column(name = "date_birth")
     @JsonSerialize(using = JsonDateSerializer.class)
     @JsonDeserialize(using = JsonDateDeserializer.class)
-    private Date dataNascimento;
+    private LocalDateTime dateBirth;
 
-    @Column(name = "TXT_EMAIL")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "NOM_CLIENTE")
+    @Column(name = "name")
     private String nomeCliente;
 
-    @Column(name = "NUM_CPF")
-    private Long numeroCpf;
+    @Column(name = "cpf")
+    private String cpf;
 
-    @Column(name = "IND_END_CORRESP")
-    private String tipoEndereco;
-
-    @Column(name = "dat_atual_email")
-    @JsonIgnore
-    private Date dataAtualizacaoEmail;
+    @Column(name = "address")
+    private String address;
 
 }
